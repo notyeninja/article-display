@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,21 +47,20 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ArticleView(title: String, paraOne: String, paraTwo: String, modifier: Modifier = Modifier) {
     Column (
-        modifier = modifier.padding(12.dp)
     ) {
         HeaderImage()
         Text(
             text = title,
-            modifier = modifier.padding(12.dp),
-            fontSize = 22.sp
+            modifier = modifier.padding(16.dp),
+            fontSize = 24.sp
         )
         Text(
             text = paraOne,
-            modifier = modifier.padding(12.dp)
+            modifier = modifier.padding(start = 16.dp, end = 16.dp),
         )
         Text(
             text = paraTwo,
-            modifier = modifier.padding(12.dp)
+            modifier = modifier.padding(16.dp),
         )
     }
 
@@ -68,7 +69,11 @@ fun ArticleView(title: String, paraOne: String, paraTwo: String, modifier: Modif
 @Composable
 fun HeaderImage() {
     var image = painterResource(id = R.drawable.bg_compose_background)
-    Image(painter = image, contentDescription = null)
+    Image(
+        painter = image,
+        contentDescription = null,
+        contentScale = ContentScale.FillWidth
+    )
 }
 
 @Preview(showBackground = true)
